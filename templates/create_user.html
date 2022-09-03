@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'demo.html' %}
+    <style>
+        .form_label{width:100px}
+        .form-container{margin-top:15px}
+    </style>
+    <script type="text/javascript" src="lib.js"></script>
+    <script>
+         function printvalue(){
+                var password = $("#password_input").val()
+                var repeatPassword = $("#password_repeat_input").val()
+                console.log(password, repeatPassword)
+            }
+            function validatePassword(event){
+                var password = $("#password_input").val()
+                var repeatPassword = $("#password_repeat_input").val()
+                console.log(password, repeatPassword)
+                if(password === ''){
+                    window.alert("Debe escribir una contrasena");
+                    event.preventDefault()
+                    return false
+                }
+                if(password === repeatPassword){
+                    return true
+                }
+                window.alert("Las contraseñas no coinciden");
+                event.preventDefault()
+                return false
+            }
+    </script>
+
+
+    <div style="margin-top:15px;">
+        <h3>Detalles de Usuarios</h3>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-container" style="display:block">
+                <label class="form_label" for="username_input" class="form-field">UserName:</label>
+                <input id="username_input" class="form-field" value="" name="username"/>
+            </div>
+            <div class="form-container" style="display:block">
+                <label class="form_label" for="first_name_input" class="form-field">Nombre:</label>
+                <input id="first_name_input" class="form-field" value="" name="first_name"/>
+            </div>
+            <div class="form-container" style="display:block">
+                <label class="form_label" for="last_name_input" class="form-field">Apellido:</label>
+                <input id="last_name_input" class="form-field" value="" name="last_name"/>
+            </div>
+            <div class="form-container" style="display:block">
+                <label class="form_label" for="email_input_id" class="form-field">Email:</label>
+                <input id="email_input_id" class="form-field" value="" name="email"/>
+            </div>
+            <div class="form-container" style="display:block">
+                <label class="form_label" for="address_input" class="form-field">Dirección: </label>
+                <input id="address_input" class="form-field" value="" name="address"/>
+            </div>
+            <div class="form-container" style="display:block">
+                <label class="form_label" for="phone_input" class="form-field">Teléfono: </label>
+                <input id="phone_input" class="form-field" value="" name="phone"/>
+            </div>
+            <div class="form-container" style="display:block">
+                <label class="form_label" for="password_input" class="form-field">Contraseña: </label>
+                <input id="password_input" type="password" class="form-field" value="" name="password"/>
+            </div>
+            <div class="form-container" style="display:block">
+                <label class="form_label" for="password_repeat_input" class="form-field">Repita la Contraseña: </label>
+                <input id="password_repeat_input" type="password" class="form-field" value=""/>
+            </div>
+            
+
+
+            <input type="submit" value="Guardar" onclick="validatePassword()">
+            <input type="button" value="log" onclick="printvalue()">
+
+
+        </form>
+
+
+    </div>
