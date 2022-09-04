@@ -1,0 +1,46 @@
+{% include 'demo.html' %}
+<style>
+    .form_label{width:100px}
+    .form-container{margin-top:15px}
+</style>
+
+<div style="margin-top:15px;">
+    <h3>Detalles de Usuarios</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-container" style="display:block">
+            <label class="form_label" for="first_name_input" class="form-field">Nombre:</label>
+            <input id="first_name_input" class="form-field"  value="{{customer_details.first_name}}" name="first_name"/>
+        </div>
+        <div class="form-container" style="display:block">
+             <label class="form_label" for="last_name_input" class="form-field">Apellido:</label>
+             <input id="last_name_input" class="form-field" value="{{customer_details.last_name}}" name="last_name"/>
+        </div>
+        <div class="form-container" style="display:block">
+            <label class="form_label" for="email_input_id" class="form-field">Email:</label>
+             <input id="email_input_id" class="form-field" value="{{customer_details.email}}" name="email" />
+        </div>
+        <div class="form-container" style="display:block">
+            <label class="form_label" for="address_input" class="form-field">Dirección: </label>
+             <input id="address_input" class="form-field" value="{{customer_details.address}}" name="address"/>
+        </div>
+         <div class="form-container" style="display:block">
+            <label class="form_label" for="phone_input" class="form-field">Teléfono: </label>
+             <input id="phone_input" class="form-field" value="{{customer_details.phone_number}}" name="phone"/>
+        </div>
+         <div class="form-container" style="display:block">
+            <label class="form_label" for="status_input" class="form-field">Usuario Activo: </label>
+
+                <input type="checkbox" {% if customer_details.status == "ACTIVE" %} checked="true" {%else%}  checked="false" {%endif%}
+                       id="status_input" class="form-field" value="{{customer_details.is_active}}" name="status"/>
+        </div>
+
+
+        <input type="submit" value="Guardar">
+
+
+    </form>
+
+
+
+</div>

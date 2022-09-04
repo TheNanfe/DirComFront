@@ -1,0 +1,36 @@
+{% include 'demo.html' %}
+{% if user_list %}
+<style>
+
+</style>
+    <div>
+        <div>
+            <a href="{% url 'create_user'%}" type="text" class="button-active" type="button">Crear usuario</a>
+        </div>
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Usuario Activo</th>
+                <th>Accion</th>
+            </thead>
+            {% for user in user_list %}
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.address}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.status}}</td>
+                    <td><a href="{% url 'get_user' pk=user.id %}" type="text" class="button-active" type="button">Editar Usuario</a></td>
+                    <td><input type="button" value="Eliminar"/></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    </div>
